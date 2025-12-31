@@ -18,6 +18,8 @@ socket.on('output-messages', (messages) => {
             outputMessage(message);
         });
     }
+    // Scroll down to the newest message
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 // 3. Message Submit

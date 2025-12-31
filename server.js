@@ -24,17 +24,6 @@ io.on('connection', (socket) => {
 
     // Load old messages from MongoDB and send to the new user
     Message.find().then(result => {
-        console.log("----------------Debug Stats----------------");
-        console.log(`User ${socket.id} joined.`);
-        console.log(`Database returned ${result.length} messages.`);
-
-        if(result.length > 0) {
-          console.log("Sample message from DB:", result[0]);
-      } else {
-          console.log("Database is empty! Messages are not saving.");
-      }
-      console.log("-------------------------------------------");
-
         socket.emit('output-messages', result); // send ol messages to the connected client/user
     }).catch(err => {
       console.log("DATABASE ERROR:", err);
